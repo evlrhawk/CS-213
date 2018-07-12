@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+<head>
+    <meta charset = "utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="week5.css">
+    <title> Bob's Burgers </title>
+    <!-- <script src="assign10.js"></script> -->
+</head>
+<body>
+
+<div style="min-width: 380px; margin-left: 25%; margin-right: 25%;">
+
+   <h1 style="text-align: center;">Bob's Burgers</h1>
+   <h4 style="text-align: center; font-style: italic;">Home of the world's juciest burger</h4>
+   <hr>
+
+   <div style="border-style: solid; background-color: #ff0066; margin-left: 10%; 
+   margin-right: 10%; border-radius: 25px;">
+      <form class="format" id="burgers" 
+      style="text-align: left; font-weight: bold; padding: 1%;" 
+      onsubmit="return validate()" action="assign10.php">
+        <div>
+            <label for="fName">First Name:</label>
+            <br>
+            <input id="fName" type="text" size="20" name="fName" 
+            style="float: left; margin-left: 30px;" autofocus>
+            <br>
+            <br>
+
+            <label for="lName">Last Name:</label>
+            <br>
+            <input type="text" size="20" name="lName" 
+            style="float: left; margin-left: 30px;">
+            <br>
+            <br>
+
+            <label for="a1">Address Line 1:</label>
+            <br>
+            <input id="a1" type="text" size="20" name="a1" 
+            style="float: left; margin-left: 30px;">
+            <br>
+            <br>
+            <label for="a2">Address Line 2:</label>
+            <br>
+            <input id="a2" type="text" size="20" name="a2" 
+            style="float: left; margin-left: 30px;">
+            <br>
+            <br>
+            <label for="city">City:</label>
+            <br>
+            <input id="city" type="text" size="20" name="city" 
+            style="float: left; margin-left: 30px;">
+            <br>
+            <br>
+            <label for="state">State:</label>
+            <br> 
+            <input id="state" type="text" size="20" name="state" 
+            style="float: left; margin-left: 30px;">
+            <br>
+            <br>
+            <label for="zip">Zip:</label>
+            <br>
+            <input id="zip" type="text" size="20" name="zip" 
+            style="float: left; margin-left: 30px;">
+            <br>
+            <br>
+
+            <label for="phone">Phone Number:</label>
+            <br>
+            <input id="phone" type="text" size="20" maxlength="12" name="phone" 
+            style="float: left; margin-left: 30px;" placeholder="XXX-XXX-XXXX">
+            <br>
+            <br>
+        </div>
+        <div>
+            <label for="type">Credit Card Type:</label>
+            <br>
+            <input id="type" type="radio" name="type" value="Visa">Visa 
+            <input id="type" type="radio" name="type" value="Mastercard">Mastercard
+            <input id="type" type="radio" name="type" value="American Express">American Express
+
+            <br>
+            <br>
+
+            <label for="cNum">Card Number:</label>
+            <br>
+            <input id="cNum" type="text" size="20" maxlength="16" name="cNum"
+            style="float: left; margin-left: 30px;">
+
+            <br>
+            <br>
+
+            <label for="exp">Expiration Date:</label>
+            <br>
+            <input id="exp" type="text" size="20" name="exp"
+            style="float: left; margin-left: 30px;">
+
+            <br>
+            <br>
+
+            <table style="background-color: #33cc33;">
+            <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th></th>                      
+            </tr>
+            <tr>
+                <td>Hamburger</td>
+                <td>$3.50</td>
+                <td><input id="food" type="checkbox" name="food" value="3.50"></td>
+            </tr>
+            <tr>
+                <td>Cheeseburger</td>
+                <td>$4.50</td>
+                <td><input id="food" type="checkbox" name="food" value="4.50"></td>
+            </tr>
+            <tr>
+                <td>Bacon Cheeseburger</td>
+                <td>$6.00</td>
+                <td><input id="food" type="checkbox" name="food" value="6.00"></td>
+            </tr>
+            <tr>
+                <td>Fries</td>
+                <td>$2.00</td>
+                <td><input id="food" type="checkbox" name="food" value="2.00"></td>
+            </tr>
+                <td>Bacon Cheese Fries</td>
+                <td>$4.00</td>
+                <td><input id="food" type="checkbox" name="food" value="4.00"></td>
+            </tr>
+            <tr style="background-color: white;">
+                <td>Total</td>
+                <td><span name="total" id="total">$0.00</span></td>
+                <td></td>
+            </tr>
+            </table>
+
+            <br>
+            <br>
+            <input id="submit" type="submit" name="submit" style="margin-left: 20%;" >
+            <input id="reset" type="reset" name="reset" style="margin-right: 20%; margin-left: 5%;">
+        </div>
+      </form>
+   </div>
+
+</div>
+
+<script type="text/javascript">
+
+ function reset() 
+       {
+          document.getElementById("fName").focus();
+       }
+       function validate() 
+       {
+
+         var phone = document.getElementById("phone").value;
+         var result = phone.search(/\d{3}-\d{3}-\d{4}/);
+
+         var card = document.getElementById("cNum").value;
+         result2 = card.search(/\d{16}/);
+         // Field Entries
+         if (document.getElementById("fName").value == "") 
+         {
+          document.getElementById("fName").value = "Invalid Input";
+           document.getElementById("fName").focus();
+           return false;
+         }
+         else if (document.getElementById("lName").value == "") 
+         {
+          document.getElementById("lName").value = "Invalid Input";
+           document.getElementById("lName").focus();
+           return false;
+         }
+         else if (document.getElementById("a1").value == "") 
+         {
+          document.getElementById("a1").value = "Invalid Input";
+           document.getElementById("a1").focus();
+           return false;
+         }
+         else if (document.getElementById("city").value == "") 
+         {
+          document.getElementById("city").value = "Invalid Input";
+           document.getElementById("city").focus();
+           return false;
+         }
+         else if (document.getElementById("state").value == "") 
+         {
+          document.getElementById("state").value = "Invalid Input";
+           document.getElementById("state").focus();
+           return false;
+         }
+         else if (document.getElementById("zip").value == "") 
+         {
+           document.getElementById("zip").value = "Invalid Input";
+           document.getElementById("zip").focus();
+           return false;
+         }
+         else if (document.getElementById("exp").value == "") 
+         {
+          document.getElementById("exp").value = "Invalid Input";
+           document.getElementById("exp").focus();
+           return false;
+         }
+         // Phone Number Validation
+         else if (  result != 0)
+          {
+            document.getElementById("phone").value = "Invalid Input";
+            document.getElementById("phone").focus();
+            return false;
+          }
+         // Credit Card Number
+         else if (result2 != 0) 
+         {
+            document.getElementById("cNum").value = "Invalid Input";
+            document.getElementById("cNum").focus();
+            return false;
+         }
+         else
+          return true;
+       }
+       function calcTotal() 
+       {
+         var total = 0.00;
+         var food = document.getElementsByName("food"); 
+         for (var i = 0; i < food.length; i++) 
+         {
+            if (food[i].checked)
+            {
+               total +=  Number(food[i].value);
+            }
+         }
+         document.getElementById("total").innerHTML = "$" + total.toFixed(2);
+       }
+
+       document.getElementById("reset").addEventListener("click",reset);
+       // document.getElementById("submit").addEventListener("click",validate);
+       [... document.querySelectorAll('[name = "food"]')].forEach(function(food)
+       {
+         food.addEventListener("click", calcTotal);
+       })
+   
+</script>
+
+</html>

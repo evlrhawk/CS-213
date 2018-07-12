@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+<head>
+    <meta charset = "utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Mortgage Calculator </title>
+    <link rel="stylesheet" type="text/css" href="Mortgage.css">
+    <script src="mortgage.js"></script>
+</head>
+<body>
+   <h1 style=" text-align: center; text-shadow: 0 0 3px #FFFFFF, 0 0 5px #1E90FF"> Mortgage Calculator</h1>
+   <div style="box-shadow: -5px -5px #FFFFFF">
+      <div style="text-align: left; border: none; margin-left: 20%;">
+         <form onsubmit="return checkErrors()" method="post" action="mortgage.php">
+
+           APR 
+           <input id="apr" type="text" size="20" name="apr" style="margin-left: 29.5%;" autofocus required />
+           <br>
+           <br>
+
+           Loan Term  
+           <input id="term" type="text" size="20" name="term" style="margin-left: 15%" required />
+           <br>
+           <br>
+
+           Loan Amount
+           <input id="amount" type="text" size="20" name="amount" style="margin-left: 9%" required />
+           <br>
+           <br>
+
+           Monthly Payment
+           <input id="payment" type="text" size="20" name="Payment" value ="$" readonly>
+           <br>
+           <br>
+
+           <input type="submit" name="Calculate" value="Calculate Payment">
+           <input type="reset" name="Clear" value="Reset Form" style="margin-left: 23%">
+
+         </form>
+      </div>
+   </div>
+
+</body>
+</html>
